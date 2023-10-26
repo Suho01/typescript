@@ -271,9 +271,12 @@ function App() {
 
     const blindNumber = (e : React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
-        if (isBtn === 1) {
-            e.target.value = e.target.value.replace(/[^0-9]/g, '');
-        }
+        const result = carriers.find((e) => e.Code === tcode);
+        if (result) {
+            if (result.International === "false") {                
+                e.target.value = e.target.value.replace(/[^0-9]/g, '');
+            }
+        }        
         setTinvoice(value);
     }
 
